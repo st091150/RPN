@@ -28,7 +28,7 @@ class Calculator {
     bool IsBracket(char c) const { return c == '(' || c == ')'; }
     bool IsSpace(char c) const { return c == ' '; }
     bool IsLexeme(char c) const { return IsNumber(c) || IsVariable(c) || IsOperator(c) || IsBracket(c); }
-    std::string SplitToLexemes(const std::string& expression) const;
+    std::string Lexemes(const std::string& expression) const;
 
     int GetPriority(char c);
     bool IsMorePriority(char curr, char top);
@@ -36,7 +36,7 @@ class Calculator {
 
 public:
     Calculator(const std::string& expression) {
-        this->expression = SplitToLexemes(expression);
+        this->expression = Lexemes(expression);
         this->rpn = RPN();
     }
     std::string GetRPN()const { return rpn; }
@@ -73,7 +73,7 @@ bool Calculator::EvaluateOperator(char op, bool arg1, bool arg2) const {
 }
 
 
-std::string Calculator::SplitToLexemes(const std::string& expression) const {
+std::string Calculator::Lexemes(const std::string& expression) const {
     std::string supVec;
     for (int i = 0; i < expression.length(); i++) {
         if (IsLexeme(expression[i])) {
