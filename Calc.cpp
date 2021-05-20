@@ -5,13 +5,12 @@
 int main() {
     while (true) {
         try {
-            std::string expression;
+            std::string str;
             std::cout << "Enter expression: ";
             std::getline(std::cin, expression);
-
-            Calculator calculator(expression);
+            Calculator calculator(str);
             std::cout << calculator.GetRPN();
-            std::cout << std::endl << "Read variable values:" << std::endl;
+            std::cout << std::endl << "Variable value" << std::endl;
             calculator.ReadVariables();
             std::cout << "Value: " << calculator.Evaluate() << std::endl;
 
